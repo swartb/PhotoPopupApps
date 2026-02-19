@@ -1,0 +1,88 @@
+﻿<Window x:Class="PhotoPopupReceiver.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PhotoPopupReceiver"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <!-- Root grid with uniform padding so no content touches the window edges. -->
+    <Grid Margin="20">
+        <StackPanel>
+
+            <!-- Header row: application title on the left, language switcher on the right. -->
+            <DockPanel Margin="0,0,0,20">
+                <!-- Language selector docked to the right so the title can take remaining space. -->
+                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock x:Name="LanguageLabelText"
+                               VerticalAlignment="Center"
+                               Margin="0,0,8,0"/>
+                    <!-- ComboBox items are populated in code-behind so they can be localised. -->
+                    <ComboBox x:Name="LanguageComboBox"
+                              Width="120"
+                              SelectionChanged="LanguageComboBox_SelectionChanged"/>
+                </StackPanel>
+
+                <!-- Application title displayed at the top of the window. -->
+                <TextBlock x:Name="AppTitleText"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           VerticalAlignment="Center"/>
+            </DockPanel>
+
+            <!-- Checkbox that enables or disables automatic clipboard copying on photo receipt.
+                 Both Checked and Unchecked route to the same handler so the setting is always
+                 kept in sync with the UI state. -->
+            <CheckBox x:Name="AutoCopyCheckBox"
+                  IsChecked="False"
+                  Margin="0,0,0,10"
+                  Checked="AutoCopyChanged"
+                  Unchecked="AutoCopyChanged"/>
+
+            <!-- Read-only text box that shows the full HTTP endpoint URL the sender must use.
+                 Transparent background and no border make it look like a label while still
+                 allowing the user to select and copy the text. -->
+            <TextBox x:Name="UrlText"
+         IsReadOnly="True"
+         TextWrapping="Wrap"
+         BorderThickness="0"
+         Background="Transparent"
+         Foreground="Gray"
+         FontSize="12"
+         Margin="0,10,0,0"/>
+
+            <!-- Button that generates and toggles the visibility of a QR code image.
+                 Scanning the QR code on a mobile device opens the upload endpoint directly. -->
+            <Button x:Name="ShowQrButton"
+        Padding="14,6"
+        Margin="0,10,0,10"
+        Click="ShowQr_Click"
+        HorizontalAlignment="Left"/>
+
+            <!-- QR code image rendered by MakeQrBitmap().
+                 Hidden by default; toggled visible/collapsed when the "Show QR" button is clicked. -->
+            <Image x:Name="QrImage"
+       Width="240"
+       Height="240"
+       Stretch="Uniform"
+       Visibility="Collapsed"/>
+            <CheckBox x:Name="RequirePasswordCheckBox"
+          Content="Wachtwoord vereisen"
+          IsChecked="True"
+          Margin="0,10,0,6"
+          Checked="RequirePasswordChanged"
+          Unchecked="RequirePasswordChanged"/>
+
+            <PasswordBox x:Name="PasswordBox"
+             Margin="0,0,0,6"
+             PasswordChanged="PasswordChanged"/>
+
+            <TextBlock x:Name="PasswordErrorText"
+           Foreground="Tomato"
+           Visibility="Collapsed"
+           Text="Wachtwoord is verplicht als 'vereisen' aan staat."
+           Margin="0,0,0,10"/>
+
+        </StackPanel>
+    </Grid>
+</Window>
