@@ -1,7 +1,6 @@
 /* English (default) */
 "AppTitle" = "Photo Popup Receiver";
 "AutoCopyCheckbox" = "Automatically copy to clipboard";
-"ShowQrButton" = "Show QR";
 "EndpointLabel" = "Endpoint:";
 "TitleBarListening" = "PhotoPopupReceiver - Listening on :%d";
 "CopyButton" = "Copy";

@@ -3,10 +3,9 @@ import SwiftUI
 
 /// The application's primary settings window.
 ///
-/// Displays the listening endpoint URL, an optional QR code for mobile access,
-/// controls for auto-popup, auto-clipboard-copy, and password authentication,
-/// and a language selector.  On appear it starts the HTTP listener via
-/// ``PhotoReceiver`` and wires up the callback for each received photo.
+/// Displays the listening endpoint URL, controls for auto-popup, auto-clipboard-copy,
+/// and password authentication, and a language selector.  On appear it starts the HTTP
+/// listener via ``PhotoReceiver`` and wires up the callback for each received photo.
 ///
 /// This mirrors the Windows ``MainWindow`` (WPF) but is written in SwiftUI for
 /// macOS.
@@ -19,8 +18,6 @@ struct ContentView: View {
     // MARK: - State
 
     @State private var endpointUrl:   String = ""
-    @State private var showQR:        Bool   = false
-    @State private var qrImage:       NSImage?
     @State private var serverStarted: Bool   = false
     @State private var serverError:   String?
 
@@ -77,21 +74,6 @@ struct ContentView: View {
                         }
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
-                }
-
-                // ── QR Code ──────────────────────────────────────────────────
-                Button(locMgr.getString("ShowQrButton")) {
-                    withAnimation { showQR.toggle() }
-                    if showQR { refreshQR() }
-                }
-                .buttonStyle(.bordered)
-
-                if showQR, let qr = qrImage {
-                    Image(nsImage: qr)
-                        .resizable()
-                        .interpolation(.none)
-                        .frame(width: 240, height: 240)
-                        .transition(.opacity)
                 }
 
                 Divider()
@@ -158,13 +140,6 @@ struct ContentView: View {
         let ip  = getLanIPv4() ?? "LAN-IP"
         let url = "http://\(ip):\(settings.port)/push-photo?token=\(settings.token)"
         endpointUrl = url
-        if showQR { refreshQR() }
-    }
-
-    private func refreshQR() {
-        let ip  = getLanIPv4() ?? "LAN-IP"
-        let url = "http://\(ip):\(settings.port)/push-photo?token=\(settings.token)"
-        qrImage = QRCodeGenerator.makeQRImage(from: url)
     }
 
     private func onPhotoSaved(_ savedPath: String) {
