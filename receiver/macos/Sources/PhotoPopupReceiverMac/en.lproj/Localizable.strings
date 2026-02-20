@@ -1,0 +1,18 @@
+/* English (default) */
+"AppTitle" = "Photo Popup Receiver";
+"AutoCopyCheckbox" = "Automatically copy to clipboard";
+"ShowQrButton" = "Show QR";
+"EndpointLabel" = "Endpoint:";
+"TitleBarListening" = "PhotoPopupReceiver - Listening on :%d";
+"CopyButton" = "Copy";
+"CloseButton" = "Close";
+"LanguageLabel" = "Language:";
+"RequirePasswordLabel" = "Require password";
+"PasswordPlaceholder" = "Password";
+"PasswordErrorText" = "Password is required when 'Require password' is enabled.";
+"AutoPopupCheckbox" = "Show popup on photo received";
+"StatusBarOpen" = "Open";
+"StatusBarQuit" = "Quit";
+"NotificationTitle" = "PhotoPopupReceiver";
+"NotificationBody" = "Running in the menu bar.";
+"NewPhotoNotificationBody" = "A new photo has been received.";
