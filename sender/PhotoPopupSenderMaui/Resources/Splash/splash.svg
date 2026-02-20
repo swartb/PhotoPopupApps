@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 456 456">
+    <!-- Camera body -->
+    <rect x="80" y="140" width="296" height="200" rx="20" fill="white" opacity="0.9"/>
+    <!-- Lens -->
+    <circle cx="228" cy="236" r="70" fill="#512BD4"/>
+    <circle cx="228" cy="236" r="50" fill="white" opacity="0.6"/>
+    <circle cx="228" cy="236" r="30" fill="#512BD4"/>
+    <!-- Viewfinder bump -->
+    <rect x="170" y="118" width="80" height="30" rx="8" fill="white" opacity="0.9"/>
+</svg>

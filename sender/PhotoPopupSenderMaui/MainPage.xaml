@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PhotoPopupSenderMaui.MainPage"
+             Title="PhotoPopup Sender">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="16" Padding="16">
+
+            <!-- Windows receiver URL input -->
+            <Border Stroke="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray600}}"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 8"
+                    Padding="12">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Windows receiver"
+                           FontAttributes="Bold"
+                           FontSize="14" />
+                    <Entry Placeholder="Base URL (e.g. http://192.168.2.20:5055)"
+                           Text="{Binding BaseUrl}"
+                           Keyboard="Url"
+                           ReturnType="Done"
+                           ClearButtonVisibility="WhileEditing" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Pick from photo library -->
+            <Button Text="📷  Choose Photo"
+                    Command="{Binding PickPhotoCommand}"
+                    IsEnabled="{Binding IsNotUploading}"
+                    HorizontalOptions="Fill" />
+
+            <!-- Take photo with camera -->
+            <Button Text="📸  Take Photo"
+                    Command="{Binding TakePhotoCommand}"
+                    IsEnabled="{Binding IsNotUploading}"
+                    HorizontalOptions="Fill"
+                    Style="{StaticResource SecondaryButtonStyle}" />
+
+            <!-- Image preview (only shown when a photo is selected) -->
+            <Image Source="{Binding PreviewImage}"
+                   Aspect="AspectFit"
+                   HeightRequest="200"
+                   IsVisible="{Binding HasPreviewImage}"
+                   HorizontalOptions="Fill" />
+
+            <!-- Send button -->
+            <Button Text="{Binding SendButtonText}"
+                    Command="{Binding SendCommand}"
+                    HorizontalOptions="Fill" />
+
+            <!-- Status text -->
+            <Label Text="{Binding StatusText}"
+                   FontSize="13"
+                   TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray400}}"
+                   HorizontalOptions="Fill" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
