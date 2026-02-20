@@ -1,0 +1,18 @@
+/* Dutch */
+"AppTitle" = "Foto Popup Ontvanger";
+"AutoCopyCheckbox" = "Automatisch kopiëren naar klembord";
+"ShowQrButton" = "QR weergeven";
+"EndpointLabel" = "Eindpunt:";
+"TitleBarListening" = "PhotoPopupReceiver - Luistert op :%d";
+"CopyButton" = "Kopiëren";
+"CloseButton" = "Sluiten";
+"LanguageLabel" = "Taal:";
+"RequirePasswordLabel" = "Wachtwoord vereisen";
+"PasswordPlaceholder" = "Wachtwoord";
+"PasswordErrorText" = "Wachtwoord is verplicht als 'vereisen' aan staat.";
+"AutoPopupCheckbox" = "Popup tonen bij ontvangen foto";
+"StatusBarOpen" = "Openen";
+"StatusBarQuit" = "Afsluiten";
+"NotificationTitle" = "PhotoPopupReceiver";
+"NotificationBody" = "Draait nu in de menubalk.";
+"NewPhotoNotificationBody" = "Er is een nieuwe foto ontvangen.";
