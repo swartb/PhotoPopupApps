@@ -12,7 +12,6 @@ A native macOS receiver app with feature parity to the Windows WPF version locat
 | File storage | `~/Pictures/PhotoPopups/<yyyy-MM-dd>/` (created automatically) |
 | Floating popup | Borderless `NSPanel` positioned at the bottom-right of the primary screen |
 | Auto-clipboard | `NSPasteboard` copy on photo receipt (optional toggle) |
-| QR code | CoreImage `CIQRCodeGenerator` — no third-party dependency |
 | Notifications | `UserNotifications` framework |
 | Menu-bar icon | `NSStatusItem` with Open / Quit menu |
 | Localisation | English (default) and Dutch; runtime-switchable via the language picker |
@@ -82,10 +81,9 @@ PhotoPopupReceiverMacApp   ← @main entry point; creates the SwiftUI scene
        ├─ AppSettings       ← ObservableObject: port, token, password, options
        ├─ LocalizationManager ← en/nl runtime switching
        ├─ PhotoReceiver     ← NWListener HTTP server; calls onPhotoSaved callback
-       ├─ AppDelegate       ← NSApplicationDelegate; owns StatusBarManager, PhotoPopupPanel
+       └─ AppDelegate       ← NSApplicationDelegate; owns StatusBarManager, PhotoPopupPanel
        │    ├─ StatusBarManager  ← NSStatusItem + UNUserNotificationCenter
        │    └─ PhotoPopupPanel   ← borderless NSPanel with SwiftUI content view
-       └─ QRCodeGenerator   ← CoreImage CIQRCodeGenerator helper
 ```
 
 ## Relationship to the Windows version
@@ -99,5 +97,4 @@ PhotoPopupReceiverMacApp   ← @main entry point; creates the SwiftUI scene
 | `TrayIconService.cs` | `StatusBarManager.swift` |
 | `ClipboardHelper.cs` | `ClipboardHelper.swift` |
 | `LocalizationManager.cs` | `LocalizationManager.swift` |
-| `QRCoder` (NuGet) | `QRCodeGenerator.swift` (CoreImage) |
 | `Strings.resx` / `Strings.nl.resx` | `en.lproj/Localizable.strings` / `nl.lproj/Localizable.strings` |

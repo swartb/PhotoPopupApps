@@ -1,7 +1,6 @@
 /* Dutch */
 "AppTitle" = "Foto Popup Ontvanger";
 "AutoCopyCheckbox" = "Automatisch kopiëren naar klembord";
-"ShowQrButton" = "QR weergeven";
 "EndpointLabel" = "Eindpunt:";
 "TitleBarListening" = "PhotoPopupReceiver - Luistert op :%d";
 "CopyButton" = "Kopiëren";
